@@ -111,6 +111,32 @@ void eliminarProducto(char nombres[][MAX_NAME], int tiempo[], int recursos[],
     printf("Producto eliminado.\n");
 }
 
+void venderProducto(char nombres[][MAX_NAME], int tiempo[], int recursos[],
+    int demanda[], int numProd) {
+
+    char nombreVenta[MAX_NAME];
+    leerCadena(nombreVenta, MAX_NAME, "Producto a vender: ");
+
+    int pos = buscarProducto(nombres, numProd, nombreVenta);
+    if (pos == -1) {
+        printf("Producto no encontrado.\n");
+        return;
+    }
+
+    int cantidadVenta = leerEnteroPositivo("Cantidad a vender: ");
+
+    if (cantidadVenta > demanda[pos]) {
+        printf("No hay suficiente inventario para vender.\n");
+        return;
+    }
+
+    demanda[pos] -= cantidadVenta;
+
+    printf("Venta realizada. Quedan %d unidades de %s.\n",
+           demanda[pos], nombres[pos]);
+}
+
+
 // CALCULAR TIEMPO TOTAL
 
 int calcularTiempo(int tiempo[], int demanda[], int numProd) {
@@ -143,4 +169,5 @@ void mostrarProductos(char nombres[][MAX_NAME], int tiempo[], int recursos[],
     for (int i = 0; i < numProd; i++) {
         printf("[%d] %s | tiempo:%d | recursos:%d | demanda:%d\n", i+1, nombres[i], tiempo[i], recursos[i], demanda[i]);
     }
+}
 }
