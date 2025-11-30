@@ -7,22 +7,26 @@
 // Prototipos de funciones
 
 void ingresarProducto(char nombres[][MAX_NAME], int tiempo[], int recursos[],
-                      int demanda[], int *numProd);
+ int demanda[], int *numProd);
+
+void venderProducto(char nombres[][MAX_NAME], int tiempo[], int recursos[],
+    int demanda[], int numProd);
+
 
 int buscarProducto(char nombres[][MAX_NAME], int numProd, char nombre[]);
 
 void editarProducto(char nombres[][MAX_NAME], int tiempo[], int recursos[],
-                    int demanda[], int numProd);
+    int demanda[], int numProd);
 
 void eliminarProducto(char nombres[][MAX_NAME], int tiempo[], int recursos[],
-                      int demanda[], int *numProd);
+    int demanda[], int *numProd);
 
 int calcularTiempo(int tiempo[], int demanda[], int numProd);
 
 int calcularRecursos(int recursos[], int demanda[], int numProd);
 
 void mostrarProductos(char nombres[][MAX_NAME], int tiempo[], int recursos[],
-                      int demanda[], int numProd);
+    int demanda[], int numProd);
 
 int leerEnteroPositivo(const char *mensaje);
 
